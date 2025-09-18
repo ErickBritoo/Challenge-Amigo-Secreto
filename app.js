@@ -3,13 +3,23 @@ var friends = [];
 const addButton = document.querySelector(".button-add");
 var htmlFriendsList = document.querySelector("#listaAmigos");
 
+function atualizarListaAmigos() {
+    htmlFriendsList.innerHTML = "";
+
+    for (let i = 0; i < friends.length; i++) {
+        let element = document.createElement("li");
+        element.textContent = friends[i];
+        htmlFriendsList.appendChild(element);
+    }
+}
+
 function adicionarAmigo() {
     let input = document.querySelector("input#amigo");
     let name = input.value.trim()
 
     if (validarNome(name)) {
         friends.push(name);
-        adicionarFriendHTML(name)
+        atualizarListaAmigos()
     } else {
         alert("Por favor, insira um nome.");
     }
@@ -18,14 +28,6 @@ function adicionarAmigo() {
 
     console.log(friends);
 }
-
-function adicionarFriendHTML(name) {
-    var element = document.createElement("li")
-    element.textContent = name;
-
-    htmlFriendsList.appendChild(element);
-}
-
 
 let validarNome = (name) => !(name === null || name === "");
 
