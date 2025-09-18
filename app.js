@@ -11,7 +11,7 @@ function adicionarAmigo() {
         friends.push(name);
         adicionarFriendHTML(name)
     } else {
-        alert("Insira um nome valido ");
+        alert("Por favor, insira um nome.");
     }
 
     input.value = null;
@@ -28,3 +28,13 @@ function adicionarFriendHTML(name) {
 
 
 let validarNome = (name) => !(name === null || name === "");
+
+function sortearAmigo() {
+    if (friends.length == 0) {
+        alert("[ERRO] Adicione amigos para realizar um sorteio!!!!");
+        return;
+    }
+
+    let indice = Math.floor(Math.random() * friends.length);
+    alert("Amigo sorteado: " + friends[indice]);
+}
