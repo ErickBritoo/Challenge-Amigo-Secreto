@@ -32,11 +32,17 @@ function adicionarAmigo() {
 let validarNome = (name) => !(name === null || name === "");
 
 function sortearAmigo() {
-    if (friends.length == 0) {
-        alert("[ERRO] Adicione amigos para realizar um sorteio!!!!");
+    if (friends.length === 0) {
+        alert("[ERRO] Adicione amigos para realizar um sorteio!");
         return;
     }
 
     let indice = Math.floor(Math.random() * friends.length);
-    alert("Amigo sorteado: " + friends[indice]);
+    let sorteado = friends[indice];
+
+    friends = [];
+    atualizarListaAmigos();
+
+    let resultado = document.getElementById("resultado");
+    resultado.innerHTML = `🎉 Amigo sorteado: <strong>${sorteado}</strong>`;
 }
